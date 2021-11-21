@@ -24,3 +24,7 @@ func (d *Dendrite) notifyAll() {
 		observer.update("spike!")
 	}
 }
+
+func makeDendrite() Dendrite {
+	return Dendrite{}
+}

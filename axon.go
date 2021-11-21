@@ -2,18 +2,22 @@ package main
 
 import "fmt"
 
-type Axon struct{}
-
-func (a Axon) spike() {
-	fmt.Println("Axon spiked")
+type Axon struct {
+	terminals []AxonTerminal
 }
 
-func (a Axon) update(message string) {
-	fmt.Println("Axon received: " + message + " from dendrite")
-	// TODO: this should not always happen - what factors are at play?
-	a.spike()
+func (a Axon) send(spike string) {
+	fmt.Println("Axon sending " + spike)
+
+	for _, t := range a.terminals {
+		t.releaseChemical()
+	}
 }
 
 func (a Axon) getId() string {
 	return "id"
+}
+
+func makeAxon(ats []AxonTerminal) Axon {
+	return Axon{terminals: ats}
 }

@@ -9,14 +9,12 @@ type Neuron struct {
 	axon     Axon
 }
 
-func (n *Neuron) init() {
-	fmt.Println("I'm a neuron")
-
-	// TODO: listen for spike on dendrite and
-	// pass on to axon
-	n.dendrite.register(n.axon)
+func (n *Neuron) spike() {
+	spike := "spike!"
+	fmt.Println("Nueron: " + spike)
+	n.axon.send(spike)
 }
 
-func makeNeuron() Neuron {
-	return Neuron{Dendrite{}, Axon{}}
+func makeNeuron(a Axon, d Dendrite) Neuron {
+	return Neuron{d, a}
 }
