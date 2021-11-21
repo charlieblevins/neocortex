@@ -1,2 +1,3 @@
 # neocortex
-A simplified model of a mammal's neocortex
+
+A learning system inspired by a mammilian neocortex.
